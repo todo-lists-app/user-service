@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  namespace: todo-list
+  labels:
+    app: user-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      hostAliases:
+        - ip: "192.168.1.67"
+          hostnames:
+            - "cob.cobden.net"
+      imagePullSecrets:
+        - name: docker-registry-secret
+      containers:
+        - name: user-service
+          image: containers.chewed-k8s.net/todo-list/user-service:latest
+          imagePullPolicy: Always
+          readinessProbe:
+            exec:
+              command:
+                - /bin/service
+                - health
+          ports:
+            - containerPort: 3000
+              name: grpc
+            - containerPort: 80
+              name: http
+          env:
+            - name: VAULT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ping-service-secrets
+                  key: vault-token
+            - name: MONGO_PING_COLLECTION
+              valueFrom:
+                secretKeyRef:
+                  name: ping-service-secrets
+                  key: mongo-ping-collection
+            - name: MONGO_DB
+              valueFrom:
+                secretKeyRef:
+                  name: ping-service-secrets
+                  key: mongo-db
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ping-service-secrets
+                  key: mongo-host
+            - name: VAULT_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ping-service-secrets
+                  key: vault-host
+            - name: MONGO_VAULT_PATH
+              valueFrom:
+                secretKeyRef:
+                  name: ping-service-secrets
+                  key: mongo-vault-path
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ping-service
+  namespace: todo-list
+  labels:
+    app: user-service
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: grpc
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: user-service
+
+

@@ -1,0 +1,33 @@
+# Build
+FROM golang:alpine3.15 as builder
+
+RUN mkdir -p /home/builder
+WORKDIR /home/builder
+
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
+COPY . .
+RUN rm -f .env
+ARG BUILD
+ARG VERSION
+ARG SERVICE_NAME
+
+RUN go build -ldflags "-w -s -X main.BuildVersion=${VERSION} -X main.BuildHash=${BUILD} -X main.ServiceName=${SERVICE_NAME}" -o ./bin/service -v ./cmd/${SERVICE_NAME}/service.go
+RUN cp ./bin/service /
+
+# Runner
+FROM alpine:3.15 AS Runner
+RUN apk update
+RUN apk upgrade
+RUN apk add ca-certificates && update-ca-certificates
+RUN apk add --update tzdata
+RUN cp /usr/share/zoneinfo/Europe/London /etc/localtime
+RUN echo "Europe/London" > /etc/timezone
+RUN rm -rf /var/cache/apk/*
+COPY --from=builder /service /bin/
+EXPOSE 80 3000
+HEALTHCHECK --interval=5s --timeout=3s --retries=3 CMD ["/bin/service", "health"]
+CMD ["/bin/service", "start"]
+
