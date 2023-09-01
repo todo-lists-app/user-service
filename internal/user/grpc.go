@@ -12,7 +12,7 @@ type Server struct {
 }
 
 func (s *Server) Delete(ctx context.Context, r *pb.UserDeleteRequest) (*pb.UserDeleteResponse, error) {
-	u := NewUserService(ctx, *s.Config, r.UserId, &RealMongoOperations{Collection: s.Mongo.Collections["user"], Database: s.Mongo.Database})
+	u := NewUserService(ctx, *s.Config, r.UserId, r.AccessToken, &RealMongoOperations{Collection: s.Mongo.Collections["user"], Database: s.Mongo.Database})
 	err := u.DeleteUser()
 	if err != nil {
 		return &pb.UserDeleteResponse{

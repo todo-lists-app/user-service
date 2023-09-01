@@ -21,7 +21,7 @@ type Service struct {
 }
 
 func NewService() (*Service, error) {
-	c, err := ConfigBuilder.Build(ConfigBuilder.Local, ConfigBuilder.Mongo, ConfigBuilder.Keycloak)
+	c, err := ConfigBuilder.Build(ConfigBuilder.Local, ConfigBuilder.Vault, ConfigBuilder.Mongo, ConfigBuilder.Keycloak)
 	if err != nil {
 		return nil, logs.Errorf("build config: %v", err)
 	}
