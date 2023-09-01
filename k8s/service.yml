@@ -31,10 +31,9 @@ spec:
           image: containers.chewed-k8s.net/todo-list/user-service:latest
           imagePullPolicy: Always
           readinessProbe:
-            exec:
-              command:
-                - /bin/service
-                - health
+            httpGet:
+              path: /health
+              port: 80
           ports:
             - containerPort: 3000
               name: grpc
@@ -44,39 +43,59 @@ spec:
             - name: VAULT_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: ping-service-secrets
+                  name: user-service-secrets
                   key: vault-token
-            - name: MONGO_PING_COLLECTION
-              valueFrom:
-                secretKeyRef:
-                  name: ping-service-secrets
-                  key: mongo-ping-collection
             - name: MONGO_DB
               valueFrom:
                 secretKeyRef:
-                  name: ping-service-secrets
+                  name: user-service-secrets
                   key: mongo-db
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:
-                  name: ping-service-secrets
+                  name: user-service-secrets
                   key: mongo-host
             - name: VAULT_HOST
               valueFrom:
                 secretKeyRef:
-                  name: ping-service-secrets
+                  name: user-service-secrets
                   key: vault-host
             - name: MONGO_VAULT_PATH
               valueFrom:
                 secretKeyRef:
-                  name: ping-service-secrets
+                  name: user-service-secrets
                   key: mongo-vault-path
+            - name: MONGO_COLLECTION_USER
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: mongo-collection-user
+            - name: KEYCLOAK_REALM
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: keycloak-realm
+            - name: KEYCLOAK_CLIENT
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: keycloak-client
+            - name: KEYCLOAK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: keycloak-secret
+            - name: KEYCLOAK_HOSTNAME
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: keycloak-hostname
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ping-service
+  name: user-service
   namespace: todo-list
   labels:
     app: user-service
