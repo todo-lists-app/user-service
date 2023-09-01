@@ -3,11 +3,14 @@ module github.com/todo-lists-app/user-service
 go 1.21
 
 require (
+	github.com/Nerzal/gocloak/v13 v13.8.0
 	github.com/bugfixes/go-bugfixes v0.9.7
 	github.com/caarlos0/env/v8 v8.0.0
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/go-chi/cors v1.2.1
+	github.com/go-resty/resty/v2 v2.7.0
 	github.com/hashicorp/vault/sdk v0.9.2
+	github.com/keloran/go-config v0.3.0
 	github.com/keloran/go-healthcheck v1.2.1
 	github.com/keloran/vault-helper v0.7.0
 	github.com/todo-lists-app/protobufs v0.1.2
@@ -16,16 +19,14 @@ require (
 )
 
 require (
-	github.com/Nerzal/gocloak/v13 v13.8.0 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/go-ping/ping v1.1.0 // indirect
-	github.com/go-resty/resty/v2 v2.7.0 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
-	github.com/google/uuid v1.3.0 // indirect
+	github.com/google/uuid v1.3.1 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
@@ -36,7 +37,6 @@ require (
 	github.com/hashicorp/go-sockaddr v1.0.2 // indirect
 	github.com/hashicorp/hcl v1.0.1-vault-5 // indirect
 	github.com/hashicorp/vault/api v1.9.2 // indirect
-	github.com/keloran/go-config v0.3.0 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
