@@ -16,7 +16,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: containers.chewed-k8s.net/todo-list/ping-service
+          images: containers.chewed-k8s.net/todo-list/user-service
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{raw}}
@@ -52,7 +52,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           push: true
           build-args: |
-            SERVICE_NAME=ping-service
+            SERVICE_NAME=user-service
             VERSION=${{ github.ref_name }}
             BUILD=${{ github.sha }}
 #  deploy:
