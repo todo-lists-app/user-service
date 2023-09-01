@@ -70,6 +70,11 @@ spec:
                 secretKeyRef:
                   name: user-service-secrets
                   key: mongo-collection-user
+            - name: MONGO_COLLECTION_LIST
+              valueFrom:
+                secretKeyRef:
+                  name: user-service-secrets
+                  key: mongo-collection-list
             - name: KEYCLOAK_REALM
               valueFrom:
                 secretKeyRef:
