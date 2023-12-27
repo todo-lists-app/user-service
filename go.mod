@@ -7,7 +7,7 @@ require (
 	github.com/bugfixes/go-bugfixes v0.9.8
 	github.com/go-chi/chi/v5 v5.0.11
 	github.com/go-chi/cors v1.2.1
-	github.com/go-resty/resty/v2 v2.10.0
+	github.com/go-resty/resty/v2 v2.11.0
 	github.com/keloran/go-config v0.4.1
 	github.com/keloran/go-healthcheck v1.2.1
 	github.com/todo-lists-app/protobufs v0.1.2
