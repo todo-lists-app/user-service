@@ -1,6 +1,7 @@
 module github.com/todo-lists-app/user-service
 
 go 1.21
+toolchain go1.22.0
 
 require (
 	github.com/Nerzal/gocloak/v13 v13.9.0
@@ -9,7 +10,7 @@ require (
 	github.com/go-chi/cors v1.2.1
 	github.com/go-resty/resty/v2 v2.12.0
 	github.com/keloran/go-config v0.5.1
-	github.com/keloran/go-healthcheck v1.2.1
+	github.com/keloran/go-healthcheck v1.2.2
 	github.com/todo-lists-app/protobufs v0.1.2
 	go.mongodb.org/mongo-driver v1.15.0
 	google.golang.org/grpc v1.63.2
