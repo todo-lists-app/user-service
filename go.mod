@@ -12,7 +12,7 @@ require (
 	github.com/keloran/go-healthcheck v1.2.1
 	github.com/todo-lists-app/protobufs v0.1.2
 	go.mongodb.org/mongo-driver v1.16.1
-	google.golang.org/grpc v1.66.0
+	google.golang.org/grpc v1.66.1
 )
 
 require (
