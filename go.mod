@@ -11,7 +11,7 @@ require (
 	github.com/keloran/go-config v0.5.4
 	github.com/keloran/go-healthcheck v1.2.1
 	github.com/todo-lists-app/protobufs v0.1.2
-	go.mongodb.org/mongo-driver v1.17.1
+	go.mongodb.org/mongo-driver v1.17.2
 	google.golang.org/grpc v1.67.1
 )
 
