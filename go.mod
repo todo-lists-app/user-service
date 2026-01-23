@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/Nerzal/gocloak/v13 v13.9.0
-	github.com/bugfixes/go-bugfixes v0.14.0
+	github.com/bugfixes/go-bugfixes v0.14.1
 	github.com/go-chi/chi/v5 v5.2.4
 	github.com/go-chi/cors v1.2.2
 	github.com/go-resty/resty/v2 v2.17.1
@@ -20,7 +20,7 @@ require (
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/go-jose/go-jose/v3 v3.0.2 // indirect
-	github.com/go-logfmt/logfmt v0.6.0 // indirect
+	github.com/go-logfmt/logfmt v0.6.1 // indirect
 	github.com/go-ping/ping v1.1.0 // indirect
 	github.com/go-test/deep v1.1.0 // indirect
 	github.com/golang-jwt/jwt/v5 v5.0.0 // indirect
