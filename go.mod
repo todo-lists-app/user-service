@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/Nerzal/gocloak/v13 v13.9.0
-	github.com/bugfixes/go-bugfixes v0.14.1
+	github.com/bugfixes/go-bugfixes v0.14.2
 	github.com/go-chi/chi/v5 v5.2.5
 	github.com/go-chi/cors v1.2.2
 	github.com/go-resty/resty/v2 v2.17.1
